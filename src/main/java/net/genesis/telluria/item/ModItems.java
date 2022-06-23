@@ -1,6 +1,6 @@
-package net.skystone.telluria.item;
+package net.genesis.telluria.item;
 
-import net.skystone.telluria.TelluriaMod;
+import net.genesis.telluria.TelluriaMod;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;

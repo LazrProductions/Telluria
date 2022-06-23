@@ -1,9 +1,9 @@
-package net.skystone.telluria;
+package net.genesis.telluria;
 
 import net.fabricmc.api.ModInitializer;
-import net.skystone.telluria.block.ModBlocks;
-import net.skystone.telluria.config.ModConfigs;
-import net.skystone.telluria.item.ModItems;
+import net.genesis.telluria.block.ModBlocks;
+import net.genesis.telluria.config.ModConfigs;
+import net.genesis.telluria.item.ModItems;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
-package net.skystone.telluria.config;
+package net.genesis.telluria.config;
 
-import net.skystone.telluria.TelluriaMod;
+import net.genesis.telluria.TelluriaMod;
 
 
 

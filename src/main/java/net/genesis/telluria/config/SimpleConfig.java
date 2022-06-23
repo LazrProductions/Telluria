@@ -1,4 +1,4 @@
-package net.skystone.telluria.config;
+package net.genesis.telluria.config;
 
 /*
  * Copyright (c) 2021 magistermaks

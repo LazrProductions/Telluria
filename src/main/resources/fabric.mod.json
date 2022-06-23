@@ -21,7 +21,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.skystone.telluria.TelluriaMod"
+      "net.genesis.telluria.TelluriaMod"
     ]
   },
   "mixins": [

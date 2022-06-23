@@ -1,6 +1,6 @@
-package net.skystone.telluria.mixin;
+package net.genesis.telluria.mixin;
 
-import net.skystone.telluria.TelluriaMod;
+import net.genesis.telluria.TelluriaMod;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
