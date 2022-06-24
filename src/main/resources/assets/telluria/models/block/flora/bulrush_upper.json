@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "telluria:block/flora/bulrush_top"
+    }
+}
