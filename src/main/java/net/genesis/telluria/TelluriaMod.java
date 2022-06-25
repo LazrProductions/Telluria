@@ -2,6 +2,7 @@ package net.genesis.telluria;
 
 import net.fabricmc.api.ModInitializer;
 import net.genesis.telluria.block.ModBlocks;
+import net.genesis.telluria.client.gui.ModUserInterfaceHander;
 import net.genesis.telluria.config.ModConfigs;
 import net.genesis.telluria.item.ModItems;
 
