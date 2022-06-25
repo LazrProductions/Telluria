@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/tinted_cross",
   "textures": {
-      "cross": "telluria:block/flora/bulrush_middle"
+      "cross": "telluria:block/flora/reeds_mid"
   }
 }

@@ -16,11 +16,11 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-//import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+
 import org.jetbrains.annotations.Nullable;
 
 public class TripleTallPlantBlock extends PlantBlock {
@@ -38,13 +38,14 @@ public class TripleTallPlantBlock extends PlantBlock {
       WorldAccess world, BlockPos pos, BlockPos neighborPos) {
       TripleBlockHalf doubleBlockHalf = (TripleBlockHalf) state.get(HALF);
 
-      if (direction.getAxis() == Axis.Y && doubleBlockHalf == TripleBlockHalf.LOWER == (direction == Direction.UP)
-            && (!neighborState.isOf(this) || neighborState.get(HALF) == doubleBlockHalf)) {
+      if (direction.getAxis() == Axis.Y && (doubleBlockHalf == TripleBlockHalf.CENTER == (direction == Direction.UP) || doubleBlockHalf == TripleBlockHalf.LOWER == (direction == Direction.UP)) && (!neighborState.isOf(this) || neighborState.get(HALF) == doubleBlockHalf)) {
          return Blocks.AIR.getDefaultState();
       } else {
-         return doubleBlockHalf == TripleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos)
-               ? Blocks.AIR.getDefaultState()
-               : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+         if (doubleBlockHalf == TripleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+         } else {
+            return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+         }
       }
    }
 
@@ -65,8 +66,6 @@ public class TripleTallPlantBlock extends PlantBlock {
        world.setBlockState(blockPos.up(), withWaterloggedState(world, blockPos.up(),
             (BlockState) this.getDefaultState().with(HALF, TripleBlockHalf.UPPER)), 3);
    }
-
-   
 
    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
       if (state.get(HALF) == TripleBlockHalf.LOWER) {

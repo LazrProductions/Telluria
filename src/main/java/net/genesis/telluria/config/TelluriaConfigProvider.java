@@ -5,7 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModConfigProvider implements SimpleConfig.DefaultConfig {
+public class TelluriaConfigProvider implements SimpleConfig.DefaultConfig {
 
     private String configContents = "";
 
