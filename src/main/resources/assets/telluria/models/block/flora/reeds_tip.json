@@ -1,0 +1,38 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "reeds_end",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "telluria:block/flora/reeds_tip",
+		"particle": "telluria:block/flora/reeds_tip"
+	},
+	"elements": [
+		{
+			"from": [8, 0, -12],
+			"to": [8, 16, 28],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 0, -12],
+			"to": [8, 16, 28],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "group",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

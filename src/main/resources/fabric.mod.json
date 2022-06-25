@@ -20,9 +20,11 @@
 
   "environment": "*",
   "entrypoints": {
+    "client": [ "net.genesis.telluria.client.TelluriaClientMod" ],
     "main": [
       "net.genesis.telluria.TelluriaMod"
     ]
+
   },
   "mixins": [
     "telluria.mixins.json"

@@ -5,9 +5,9 @@ import net.genesis.telluria.TelluriaMod;
 
 
 
-public class ModConfigs {
+public class TelluriaConfigs {
     public static SimpleConfig CONFIG;
-    private static ModConfigProvider configs;
+    private static TelluriaConfigProvider configs;
 
     ///// State Config Values here
     
@@ -19,7 +19,7 @@ public class ModConfigs {
     ///// when adding/removing config variables, delete the config file in /run/configs
 
     public static void registerConfigs() {
-        configs = new ModConfigProvider();
+        configs = new TelluriaConfigProvider();
         createConfigs();
 
         CONFIG = SimpleConfig.of(TelluriaMod.MOD_ID + "config").provider(configs).request();
