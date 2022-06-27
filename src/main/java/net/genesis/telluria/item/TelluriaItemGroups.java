@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-public class ModItemGroups {
+public class TelluriaItemGroups {
     public static final CreativeModeTab BLOCKS = new CreativeModeTab("telluria_blocks") {
         @Override
         public ItemStack makeIcon() {

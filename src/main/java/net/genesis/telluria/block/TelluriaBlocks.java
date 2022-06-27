@@ -3,7 +3,7 @@ package net.genesis.telluria.block;
 import java.util.function.Supplier;
 
 import net.genesis.telluria.TelluriaMod;
-import net.genesis.telluria.item.ModItems;
+import net.genesis.telluria.item.TelluriaItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -13,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlocks {
+public class TelluriaBlocks {
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			TelluriaMod.MOD_ID);
@@ -39,7 +39,7 @@ public class ModBlocks {
 
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
 			CreativeModeTab tab) {
-		return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+		return TelluriaItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
 	}
 
 	public static void register(IEventBus eventBus) {
