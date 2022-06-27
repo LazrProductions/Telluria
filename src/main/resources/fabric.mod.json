@@ -22,6 +22,9 @@
   "entrypoints": {
     "main": [
       "net.genesis.telluria.TelluriaMod"
+    ],
+    "client": [
+      "net.genesis.telluria.client.TelluriaClientMod"
     ]
   },
   "mixins": [

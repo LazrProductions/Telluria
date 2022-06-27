@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "TelluriaMixin"
+    "TelluriaMixin",
+    "RenderOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

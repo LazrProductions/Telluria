@@ -1,13 +1,12 @@
 package net.genesis.telluria;
 
-import net.fabricmc.api.ModInitializer;
-import net.genesis.telluria.block.ModBlocks;
-import net.genesis.telluria.client.gui.ModUserInterfaceHander;
-import net.genesis.telluria.config.ModConfigs;
-import net.genesis.telluria.item.ModItems;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.fabricmc.api.ModInitializer;
+import net.genesis.telluria.block.ModBlocks;
+import net.genesis.telluria.config.ModConfigs;
+import net.genesis.telluria.item.ModItems;
 
 public class TelluriaMod implements ModInitializer {
     public static final String MOD_ID = "telluria";
