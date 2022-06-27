@@ -1,20 +1,27 @@
 package net.genesis.telluria.block.custom.flora;
 
+import java.util.Iterator;
+
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Iterator;
-import net.minecraft.util.math.Direction.Type;
+import net.genesis.telluria.TelluriaMod;
+import net.genesis.telluria.util.TelluriaMathUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
@@ -23,13 +30,16 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Direction.Type;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraft.state.StateManager.Builder;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ReedsBlock extends Block implements Waterloggable, Fertilizable {
    private static final IntProperty AGE;
@@ -80,6 +90,34 @@ public class ReedsBlock extends Block implements Waterloggable, Fertilizable {
       return false;
       
    }
+
+
+   /// Slow entities moving through this block
+   Vec3d prevPos = new Vec3d(0,0,0);
+   public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+      if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+         entity.slowMovement(state, new Vec3d(0.800000011920929D, 0.75D, 0.800000011920929D));
+         
+         if (entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ()) {
+            double d = Math.abs(entity.getX() - entity.lastRenderX);
+            double e = Math.abs(entity.getZ() - entity.lastRenderZ);
+            if (d >= 0.003000000026077032D || e >= 0.003000000026077032D) {
+               
+               double dist = TelluriaMathUtils.getDistance(prevPos, entity.getPos());
+               TelluriaMod.LOGGER.info("[ Reeds ] - dist from last block: " + dist + " -  should play sound: " + ((0.15f < dist && dist > 0 ) || (-0.15f > dist && dist < 0)));
+               if ((0.15f < dist && dist > 0 ) || (-0.15f > dist && dist < 0)) {
+                  prevPos = entity.getPos();
+                  var rand = ThreadLocalRandom.current();
+                  var sound = SoundEvents.BLOCK_AZALEA_LEAVES_STEP;
+                  entity.playSound(sound,
+                        (float) 0.25f, 1 * rand.nextFloat());
+               }
+            }
+         }
+
+      }
+   }
+   ///
 
    @Override
    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos,

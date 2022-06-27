@@ -15,6 +15,9 @@ import net.minecraft.client.render.RenderLayer;
 public class TelluriaClientMod implements ClientModInitializer {
 
 	private static final BlockColorProvider FOLIAGE_BLOCK_COLORS =
+			(block, world, pos, layer) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : FoliageColors.getDefaultColor();
+
+    private static final BlockColorProvider LEAVES_BLOCK_COLORS =
 			(block, world, pos, layer) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor();
 
     @Override
@@ -24,21 +27,36 @@ public class TelluriaClientMod implements ClientModInitializer {
         //Cutout Blocks
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.BULRUSH);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.REEDS);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.CATTAILS);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.WILLOWLEAVES);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.WILLOWSAPLING);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.WILLOWDOOR);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), TelluriaBlocks.WILLOWTRAPDOOR);
 
         //Register Block Colors
 		ColorProviderRegistry.BLOCK.register(
 				FOLIAGE_BLOCK_COLORS,
                 TelluriaBlocks.BULRUSH
 		);
+		ColorProviderRegistry.BLOCK.register(
+				LEAVES_BLOCK_COLORS,
+                TelluriaBlocks.WILLOWLEAVES
+		);
+
 
         //Register Item Colors
         ColorProviderRegistry.ITEM.register(
             (stack, tintIndex) -> {
                 return GrassColors.getColor(0.5D, 1.0D);
             },
-            TelluriaBlocks.BULRUSH.asItem()
+            TelluriaBlocks.BULRUSH
         );
-
+        ColorProviderRegistry.ITEM.register(
+            (stack, tintIndex) -> {
+                return GrassColors.getColor(0.5D, 1.0D);
+            },
+            TelluriaBlocks.WILLOWLEAVES
+        );
     }
     
 }

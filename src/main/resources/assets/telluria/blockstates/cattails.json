@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "half=lower,variant=0": {
+      "model": "telluria:block/flora/cattails_base_1"
+    },
+    "half=lower,variant=1": {
+      "model": "telluria:block/flora/cattails_base_2"
+    },
+    "half=lower,variant=2": {
+      "model": "telluria:block/flora/cattails_base_3"
+    },
+    "half=upper,variant=0": {
+      "model": "telluria:block/flora/cattails_tip_1"
+    },
+    "half=upper,variant=1": {
+      "model": "telluria:block/flora/cattails_tip_2"
+    },
+    "half=upper,variant=2": {
+      "model": "telluria:block/flora/cattails_tip_3"
+    }
+  }
+}
