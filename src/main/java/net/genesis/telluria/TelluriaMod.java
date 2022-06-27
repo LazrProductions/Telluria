@@ -4,7 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.genesis.telluria.block.ModBlocks;
-import net.genesis.telluria.capabilities.thirst.Thirst;
+import net.genesis.telluria.capabilities.TelluriaCapabilities;
+import net.genesis.telluria.capabilities.thirst.ThirstAttacher;
 import net.genesis.telluria.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,7 +26,8 @@ public class TelluriaMod {
         ModBlocks.register(eventBus);
 
 		eventBus.addListener(this::setup);
-		MinecraftForge.EVENT_BUS.register(Thirst.class);
+		MinecraftForge.EVENT_BUS.register(TelluriaCapabilities.class);
+		MinecraftForge.EVENT_BUS.register(ThirstAttacher.class);
 		
 		MinecraftForge.EVENT_BUS.register(this);		
 	}

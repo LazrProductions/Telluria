@@ -15,6 +15,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ThirstAttacher{
 	
@@ -45,7 +46,8 @@ public class ThirstAttacher{
             this.backend.deserializeNBT(nbt);
         }
     }
-
+	
+	@SubscribeEvent
     public static void attach(final AttachCapabilitiesEvent<Entity> event) {
         final ThirstProvider provider = new ThirstProvider();
 

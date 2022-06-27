@@ -39,8 +39,8 @@ public class ThirstOverlay implements IIngameOverlay {
 			gui.right_height += 10;
 			boolean unused = false;
 
-			LazyOptional<IThirst> stats = player.getCapability(TelluriaCapabilities.THIRST, null);
-			int level = 0;
+			IThirst stats = player.getCapability(TelluriaCapabilities.THIRST).orElseThrow(IllegalStateException::new);
+			int level = stats.getThirst();
 
 			for (int i = 0; i < 10; ++i) {
 				int idx = i * 2 + 1;
@@ -49,9 +49,9 @@ public class ThirstOverlay implements IIngameOverlay {
 				int icon = 0;
 				byte background = 0;
 
-				if (minecraft.player.hasEffect(MobEffects.HUNGER)) {
-					icon += 36;
-				}
+				//if (minecraft.player.hasEffect(MobEffects.HUNGER)) {
+				//	icon += 36;
+				//}
 				if (unused)
 					background = 1; // Probably should be a += 1 but vanilla never uses this
 
