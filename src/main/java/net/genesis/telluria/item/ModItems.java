@@ -1,26 +1,19 @@
 package net.genesis.telluria.item;
 
 import net.genesis.telluria.TelluriaMod;
-
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModItems {
     
-    ///// Register Items Here
-    
-    
+	public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, TelluriaMod.MOD_ID);
 
-    /////
+	//public static final RegistryObject<Item> CITRINE = ITEMS.register("citrine", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-
-    ///// Registering Items
-    private static Item registerItem(String name, Item item) {
-        return Registry.register(Registry.ITEM, new Identifier(TelluriaMod.MOD_ID, name), item);
-    }
-
-    public static void registerModItems() {
-        TelluriaMod.LOGGER.debug("Registering mod items for " + TelluriaMod.MOD_ID);
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
     }
 }

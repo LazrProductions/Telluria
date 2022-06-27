@@ -1,35 +1,48 @@
 package net.genesis.telluria.block;
 
+import java.util.function.Supplier;
+
 import net.genesis.telluria.TelluriaMod;
-import net.genesis.telluria.block.custom.flora.BulrushBlock;
-import net.genesis.telluria.item.ModItemGroups;
-import net.minecraft.core.Registry;
+import net.genesis.telluria.item.ModItems;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlocks {
 
-    /////Register Blocks here
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+			TelluriaMod.MOD_ID);
 
-    public static final Block BULRUSH = registerBlock("bulrush", new BulrushBlock(FabricBlockSettings.of(Material.WOOD).nonOpaque().breakInstantly().collidable(false)), ModItemGroups.FLORA);
+	/*
+	 * public static final RegistryObject<Block> CITRINE_BLOCK =
+	 * registerBlock("citrine_block", () -> new
+	 * Block(BlockBehaviour.Properties.of(Material.METAL)
+	 * .strength(9f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+	 */
 
-    /////
+	///// Register Blocks here
 
+	/////
 
-    ///// Registering Blocks
-    private static Block registerBlock(String name, Block block, ItemGroup group) {
-        registerBlockItem(name, block, group);
-        return Registry.register(Registry.BLOCK, new Identifier(TelluriaMod.MOD_ID, name), block);
-    }
+	///// Registering Blocks
+	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,
+			CreativeModeTab tab) {
+		RegistryObject<T> toReturn = BLOCKS.register(name, block);
+		registerBlockItem(name, toReturn, tab);
+		return toReturn;
+	}
 
-    private static Item registerBlockItem(String name, Block block, ItemGroup group) {
-        return Registry.register(Registry.ITEM, new Identifier(TelluriaMod.MOD_ID, name),
-                new BlockItem(block, new ItemSettings().group(group)));
-    }
+	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
+			CreativeModeTab tab) {
+		return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+	}
 
-    public static void registerModBlocks() {
-        TelluriaMod.LOGGER.info("Registering ModBlocks for " + TelluriaMod.MOD_ID);
-    }
+	public static void register(IEventBus eventBus) {
+		BLOCKS.register(eventBus);
+	}
 }

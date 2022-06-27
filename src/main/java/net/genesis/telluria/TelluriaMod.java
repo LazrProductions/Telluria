@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.genesis.telluria.block.ModBlocks;
-import net.genesis.telluria.config.ModConfigs;
 import net.genesis.telluria.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,13 +19,10 @@ public class TelluriaMod {
 
 	public TelluriaMod() {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		
-		// Register the config files and pull the values
-		ModConfigs.registerConfigs();
 
 		// Register Blocks and Items
-		ModItems.registerModItems();
-		ModBlocks.registerModBlocks();
+		ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 		
 		eventBus.addListener(this::setup);
 		
