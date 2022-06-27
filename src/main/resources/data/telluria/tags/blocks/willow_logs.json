@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "telluria:willow_log",
+        "telluria:stripped_willow_log",
+        "telluria:willow_wood",
+        "telluria:stripped_willow_wood"
+    ]
+}

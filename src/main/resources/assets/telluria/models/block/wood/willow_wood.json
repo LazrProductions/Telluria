@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "telluria:block/wood/willow_log",
+    "side": "telluria:block/wood/willow_log"
+  }
+}

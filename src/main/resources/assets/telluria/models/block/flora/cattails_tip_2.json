@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "telluria:block/flora/cattails_tip_2"
+    }
+}
