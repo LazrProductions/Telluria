@@ -1,12 +1,12 @@
 {
     "variants": {
-        "half=lower": {
+        "half=0": {
             "model": "telluria:block/flora/bulrush_lower"
           },
-          "half=center": {
+          "half=1": {
             "model": "telluria:block/flora/bulrush_center"
           },
-          "half=upper": {
+          "half=2": {
             "model": "telluria:block/flora/bulrush_upper"
           }
     }

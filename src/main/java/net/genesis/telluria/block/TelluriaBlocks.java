@@ -3,6 +3,7 @@ package net.genesis.telluria.block;
 import java.util.function.Supplier;
 
 import net.genesis.telluria.TelluriaMod;
+import net.genesis.telluria.block.custom.flora.BulrushBlock;
 import net.genesis.telluria.item.TelluriaItemGroups;
 import net.genesis.telluria.item.TelluriaItems;
 import net.minecraft.world.item.BlockItem;
@@ -23,8 +24,8 @@ public class TelluriaBlocks {
 	
 	///// Register Blocks here
 
-    public static final RegistryObject<Block> CITRINE_BLOCK = registerBlock("citrine_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS)), 
+    public static final RegistryObject<Block> BULRUSH = registerBlock("bulrush",
+            () -> new BulrushBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS)), 
 				TelluriaItemGroups.FLORA);
 
 
