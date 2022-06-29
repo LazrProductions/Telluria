@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "telluria:block/flora/willow_leaves"
+    },
+    "bottom=true": {
+      "model": "telluria:block/flora/willow_leaves_bottom"
+    }
+  }
+}

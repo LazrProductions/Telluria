@@ -167,27 +167,7 @@ public class TripleTallPlantBlock extends BushBlock {
             pLevel.levelEvent(pPlayer, 2001, blockPosLower, Block.getId(newBlockStateLower));
             pLevel.levelEvent(pPlayer, 2001, blockPosUpper, Block.getId(newBlockStateUpper));
          }
-      } /*else {
-         BlockPos blockPosCenter = pPos.above();
-         BlockPos blockPosUpper = blockPosCenter.above();
-         BlockState blockStateCenter = pLevel.getBlockState(blockPosCenter);
-         BlockState blockStateUpper = pLevel.getBlockState(blockPosUpper);
-
-         if (blockStateCenter.is(pState.getBlock()) && blockStateCenter.getValue(HALF) == 0
-               && blockStateUpper.getValue(HALF) == 2) {
-            BlockState newBlockStateCenter = blockStateCenter.hasProperty(BlockStateProperties.WATERLOGGED)
-                  && (Boolean) blockStateCenter.getValue(BlockStateProperties.WATERLOGGED) == true ? Blocks.WATER.defaultBlockState()
-                        : Blocks.AIR.defaultBlockState();
-            BlockState newBlockStateUpper = blockStateUpper.hasProperty(BlockStateProperties.WATERLOGGED)
-                  && (Boolean) blockStateUpper.getValue(BlockStateProperties.WATERLOGGED) == true ? Blocks.WATER.defaultBlockState()
-                        : Blocks.AIR.defaultBlockState();
-
-            pLevel.setBlock(blockPosCenter, newBlockStateCenter, 35);
-            pLevel.setBlock(blockPosUpper, newBlockStateUpper, 35);
-            pLevel.levelEvent(pPlayer, 2001, blockPosCenter, Block.getId(newBlockStateCenter));
-            pLevel.levelEvent(pPlayer, 2001, blockPosUpper, Block.getId(newBlockStateUpper));
-         }
-      }*/
+      }
 
    }
 

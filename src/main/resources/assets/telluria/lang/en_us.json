@@ -3,6 +3,28 @@
     "itemGroup.telluria_fauna": "Telluria Fauna",
     "itemGroup.telluria_blocks": "Telluria Blocks",
 
-    "block.telluria.bulrush": "Bulrush"
+    "block.telluria.bulrush": "Bulrush",
+    "block.telluria.reeds": "Reeds",
+    "block.telluria.cattails": "Cattails",
+
+    "block.telluria.willow_log": "Willow Log",
+    "block.telluria.stripped_willow_log": "Stripped Willow Log",
+    "block.telluria.willow_wood": "Willow Wood",
+    "block.telluria.stripped_willow_wood": "Stripped Willow Wood",
+    "block.telluria.willow_leaves": "Willow Leaves",
+    "block.telluria.willow_sapling": "Willow Sapling",
+
+    "block.telluria.willow_planks": "Willow Planks",
+    "block.telluria.willow_pressure_plate": "Willow Pressure Plate",
+    "block.telluria.willow_button": "Willow Button",
+    "block.telluria.willow_fence": "Willow Fence",
+    "block.telluria.willow_fence_gate": "Willow Fence Gate",
+    "block.telluria.willow_door": "Willow Door",
+    "block.telluria.willow_trapdoor": "Willow Trapdoor",
+    "block.telluria.willow_slab": "Willow Slab",
+    "block.telluria.willow_stairs": "Willow Stair",
+    "block.telluria.willow_sign": "Willow Sign",
+    "block.telluria.willow_wall_sign": "Willow Wall Sign",
+    "item.telluria.willow_sign": "Willow Sign"
 
 }

@@ -37,10 +37,13 @@ public class TelluriaMod {
 	}
 
 	private void clientSetup(final FMLClientSetupEvent event) {
+		//Register Render Layers
 		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.BULRUSH.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.CATTAILS.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.REEDS.get(), RenderType.cutout());
 		
-		//Register Block Colors
-
+		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.WILLOW_DOOR.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.WILLOW_TRAPDOOR.get(), RenderType.cutout());
 	}
 
 	public void setup(final FMLCommonSetupEvent event) {

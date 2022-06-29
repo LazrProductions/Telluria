@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "telluria:block/wood/willow_slab"
+    },
+    "type=double": {
+      "model": "telluria:block/wood/willow_planks"
+    },
+    "type=top": {
+      "model": "telluria:block/wood/willow_slab_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "end=0": {
+            "model": "telluria:block/flora/reeds"
+          },
+          "end=1": {
+            "model": "telluria:block/flora/reeds_end"
+          },
+          "end=2": {
+            "model": "telluria:block/flora/reeds_tip"
+          }
+    }
+}
