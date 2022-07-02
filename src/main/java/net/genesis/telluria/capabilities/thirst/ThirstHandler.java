@@ -129,6 +129,12 @@ public class ThirstHandler extends StatHandler implements IThirst{
     }
     
     @Override
+    public void onSendClientUpdate()
+    {
+        this.prevThirstLevel = this.thirstLevel;
+    }
+    
+    @Override
     public CompoundTag serializeNBT() {
         final CompoundTag tag = new CompoundTag();
         tag.putInt("thirstLevel", this.thirstLevel);

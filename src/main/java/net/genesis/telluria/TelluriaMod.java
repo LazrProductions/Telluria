@@ -3,15 +3,27 @@ package net.genesis.telluria;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.genesis.telluria.block.ModBlocks;
+import net.genesis.telluria.block.TelluriaBlocks;
 import net.genesis.telluria.capabilities.TelluriaCapabilities;
-import net.genesis.telluria.capabilities.thirst.ThirstAttacher;
-import net.genesis.telluria.item.ModItems;
+import net.genesis.telluria.client.gui.overlay.ThirstOverlay;
+import net.genesis.telluria.event.PacketHandler;
+import net.genesis.telluria.event.StatEventHandler;
+import net.genesis.telluria.event.TelluriaHandlers;
+import net.genesis.telluria.event.ThirstStatHandler;
+import net.genesis.telluria.item.TelluriaItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.entity.Entity;
+import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib3.GeckoLib;
+
+import static net.minecraftforge.client.gui.ForgeIngameGui.FOOD_LEVEL_ELEMENT;
 
 @Mod(TelluriaMod.MOD_ID)
 public class TelluriaMod {
@@ -22,16 +34,33 @@ public class TelluriaMod {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		// Register Blocks and Items
-		ModItems.register(eventBus);
-        ModBlocks.register(eventBus);
+		TelluriaItems.register(eventBus);
+        TelluriaBlocks.register(eventBus);
+		
+        eventBus.addListener(this::setup);	
+        eventBus.addListener(this::clientSetup);
+		
+        TelluriaHandlers.init();
+		
 
-		eventBus.addListener(this::setup);
-		MinecraftForge.EVENT_BUS.register(TelluriaCapabilities.class);
-		MinecraftForge.EVENT_BUS.register(ThirstAttacher.class);
+		GeckoLib.initialize();
+
 		
 		MinecraftForge.EVENT_BUS.register(this);		
 	}
-	
-	public void setup(final FMLCommonSetupEvent event) {
+
+	private void clientSetup(final FMLClientSetupEvent event) {
+		ItemBlockRenderTypes.setRenderLayer(TelluriaBlocks.BULRUSH.get(), RenderType.cutout());
+
+		OverlayRegistry.registerOverlayAbove(FOOD_LEVEL_ELEMENT, "thirst_overlay", new ThirstOverlay());
+		
+		//Register Block Colors
+
 	}
+
+	public void setup(final FMLCommonSetupEvent event) {
+		event.enqueueWork(PacketHandler::init);
+	}
+
+
 }

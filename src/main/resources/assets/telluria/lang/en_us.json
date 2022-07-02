@@ -1,5 +1,8 @@
 {
-    "itemGroup.telluria.flora": "Telluria Flora",
-    "itemGroup.telluria.fauna": "Telluria Fauna",
-    "itemGroup.telluria.block": "Telluria Blocks"
+    "itemGroup.telluria_flora": "Telluria Flora",
+    "itemGroup.telluria_fauna": "Telluria Fauna",
+    "itemGroup.telluria_blocks": "Telluria Blocks",
+
+    "block.telluria.bulrush": "Bulrush"
+
 }
