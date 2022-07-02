@@ -10,9 +10,11 @@ import net.genesis.telluria.block.custom.flora.WillowLeavesBlock;
 import net.genesis.telluria.block.util.LogBlock;
 import net.genesis.telluria.block.util.TelluriaStandingSignBlock;
 import net.genesis.telluria.block.util.TelluriaWallSignBlock;
-import net.genesis.telluria.block.util.TelluriaWoodTypes;
+import net.genesis.telluria.block.util.WaterloggableSaplingBlock;
+import net.genesis.telluria.block.entity.TelluriaWoodTypes;
 import net.genesis.telluria.item.TelluriaItemGroups;
 import net.genesis.telluria.item.TelluriaItems;
+import net.genesis.telluria.world.feature.tree.WillowTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
@@ -55,7 +57,7 @@ public class TelluriaBlocks {
     public static final RegistryObject<Block> STRIPPED_WILLOW_WOOD = registerBlock("stripped_willow_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)) { @Override public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return true; } @Override public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 20; } @Override public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 5; } }, TelluriaItemGroups.BLOCKS);
     public static final RegistryObject<Block> WILLOW_WOOD = registerBlock("willow_wood", () -> new LogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD), TelluriaBlocks.STRIPPED_WILLOW_WOOD), TelluriaItemGroups.BLOCKS);
     public static final RegistryObject<Block> WILLOW_LEAVES = registerBlock("willow_leaves", () -> new WillowLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), TelluriaItemGroups.BLOCKS);
-    //public static final RegistryObject<Block> WILLOW_SAPLING = registerBlock("willow_sapling", () -> new WaterloggableSaplingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), TelluriaItemGroups.BLOCKS);
+    public static final RegistryObject<Block> WILLOW_SAPLING = registerBlock("willow_sapling", () -> new WaterloggableSaplingBlock(new WillowTreeGrower(),BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), TelluriaItemGroups.BLOCKS);
     
     //Willow Wood Components
     public static final RegistryObject<Block> WILLOW_PLANKS = registerBlock("willow_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), TelluriaItemGroups.BLOCKS);

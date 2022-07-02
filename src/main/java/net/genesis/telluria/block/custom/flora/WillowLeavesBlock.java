@@ -20,11 +20,13 @@ public class WillowLeavesBlock extends LeavesBlock {
     
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        if(!pLevel.getBlockState(pPos.below()).isAir()) {
-            pLevel.setBlock(pPos, pState.setValue(BOTTOM, false), 3);
-        } else {
-            pLevel.setBlock(pPos, pState.setValue(BOTTOM, true), 3);
+
+        boolean bottom = false;
+        if(pLevel.getBlockState(pPos.below()).isAir()) {
+            bottom = true;
         }
+
+        pLevel.setBlock(pPos, pState.setValue(BOTTOM, bottom), 3);
     }
 
     @Override

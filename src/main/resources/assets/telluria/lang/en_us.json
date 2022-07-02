@@ -25,6 +25,8 @@
     "block.telluria.willow_stairs": "Willow Stair",
     "block.telluria.willow_sign": "Willow Sign",
     "block.telluria.willow_wall_sign": "Willow Wall Sign",
-    "item.telluria.willow_sign": "Willow Sign"
+    "item.telluria.willow_sign": "Willow Sign",
+
+    "sounds.telluria.salt_marsh_ambience_1": "Bugs Buzzing"
 
 }

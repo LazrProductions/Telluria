@@ -17,5 +17,4 @@ public class TelluriaClientEventsHandler {
     public static void telluria_onColorHandlerEvent$Item(ColorHandlerEvent.Item event) {
         TelluriaColorManager.onItemColorsInit(event.getBlockColors(), event.getItemColors());
     }
-
 }

@@ -31,7 +31,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CattailsBlock extends DoublePlantBlock implements SimpleWaterloggedBlock {
 
-    private static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 2);
+    public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 2);
     
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final float AABB_OFFSET = 6.0F;

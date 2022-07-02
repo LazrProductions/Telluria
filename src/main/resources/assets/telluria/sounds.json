@@ -1,0 +1,8 @@
+{
+    "salt_marsh_ambience_1": {
+        "subtitle": "sounds.telluria.salt_marsh_ambience_1",
+        "sounds": [
+            "telluria:ambience/salt_marsh_ambience_1"
+        ]
+    }
+}
