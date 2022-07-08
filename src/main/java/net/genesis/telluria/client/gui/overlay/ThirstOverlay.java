@@ -6,9 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.genesis.telluria.TelluriaMod;
-import net.genesis.telluria.capabilities.TelluriaCapabilities;
-import net.genesis.telluria.capabilities.thirst.IThirst;
-import net.genesis.telluria.capabilities.thirst.ThirstHandler;
+import net.genesis.telluria.network.ClientAccess;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
@@ -16,7 +14,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
-import net.minecraftforge.common.util.LazyOptional;
 
 public class ThirstOverlay implements IIngameOverlay {
 
@@ -32,15 +29,14 @@ public class ThirstOverlay implements IIngameOverlay {
 			minecraft.getProfiler().push("thirst");
 
 			gui.setupOverlayRenderState(true, false, ICONS_LOCATION);
-	        Player player = (Player)this.minecraft.getCameraEntity();
 			RenderSystem.enableBlend();
 			int left = width / 2 + 91;
 			int top = height - gui.right_height;
 			gui.right_height += 10;
 			boolean unused = false;
 
-			LazyOptional<IThirst> stats = player.getCapability(TelluriaCapabilities.THIRST, null);
-			int level = 0;
+			int level = ClientAccess.getThirst();
+			float hydrationLevel = ClientAccess.getHydration();
 
 			for (int i = 0; i < 10; ++i) {
 				int idx = i * 2 + 1;
@@ -53,7 +49,7 @@ public class ThirstOverlay implements IIngameOverlay {
 					icon += 36;
 				}
 				if (unused)
-					background = 1; // Probably should be a += 1 but vanilla never uses this
+					background = 1;
 
 				gui.blit(poseStack, x, y, background * 9, 16, 9, 9);
 
@@ -61,6 +57,11 @@ public class ThirstOverlay implements IIngameOverlay {
 					gui.blit(poseStack, x, y, icon + 9, 16, 9, 9);
 				else if (idx == level)
 					gui.blit(poseStack, x, y, icon + 18, 16, 9, 9);
+				
+				if (idx < hydrationLevel)
+					gui.blit(poseStack, x, y, icon + 27, 16, 9, 9);
+				else if (idx == hydrationLevel)
+					gui.blit(poseStack, x, y, icon + 36, 16, 9, 9);
 			}
 			RenderSystem.disableBlend();
 			minecraft.getProfiler().pop();

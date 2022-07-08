@@ -14,4 +14,5 @@ public interface IThirst extends IPlayerStat{
 
     public void setChangeTime(int ticks);
     public int getChangeTime();
+	public boolean isThirsty();
 }
